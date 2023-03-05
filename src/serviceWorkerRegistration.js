@@ -135,3 +135,15 @@ export function unregister() {
       });
   }
 }
+
+export function skipwaiting(){
+  if ('serviceworker' in navigator){
+    navigator.serviceWorker.ready
+    .then((registration)=>{
+      registration.waiting?.postMessage({typz:"SKIP_WAITING"});
+    })
+    .catch((error)=>{
+      console.log(error.message)
+    })
+  }
+}
